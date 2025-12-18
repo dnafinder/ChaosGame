@@ -1,6 +1,6 @@
-# ChaosGame (MATLAB)
+# ChaosGame
 
-[![Open in MATLAB Online](https://matlab.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=dnafinder/ChaosGame&file=ngonChaosGame.m)
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=dnafinder/ChaosGame&file=ngonChaosGame.m)
 
 ## 🧩 Overview
 ChaosGame is a MATLAB implementation of the chaos game on a regular N-gon (N ≥ 5). At each iteration, a vertex is selected (optionally under exclusion rules) and the current point is moved toward that vertex by a fixed contraction ratio. The default ratio is computed automatically using the “kissing/optimal ratio” for the chosen polygon order.
