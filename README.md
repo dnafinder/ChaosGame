@@ -21,7 +21,7 @@ The function includes a reel-like animation mode: the diagonal from the current 
   - diagonal appears → point is fixed → diagonal disappears
   - hybrid mode: animate first steps, then render the remaining points quickly
 - Polygon outline is always shown when plotting/exporting.
-- Optional export to PNG and MP4.
+- Optional export to PNG and AVI.
 
 ## 🧠 Selection Logic
 ### Vertex update rule
@@ -102,8 +102,8 @@ RuleFcn must return allowed vertex indices in 1..N:
 ### Export PNG
     ngonChaosGame(7, 'Animate', false, 'PngFile', 'ngon7.png', 'Dpi', 300)
 
-### Export MP4 (records during animation)
-    ngonChaosGame(7, 'VideoFile', 'ngon7.mp4', 'Fps', 30, 'AnimateSteps', 6000)
+### Export AVI (records during animation)
+    ngonChaosGame(7, 'VideoFile', 'ngon7.avi', 'Fps', 30, 'AnimateSteps', 6000)
 
 ## 📝 Notes
 - The polygon outline is always drawn when plotting/exporting.
