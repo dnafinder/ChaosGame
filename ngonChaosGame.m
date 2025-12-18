@@ -50,7 +50,7 @@ function out = ngonChaosGame(N, varargin)
 % Export (optional)
 %   'PngFile'        : ''              e.g. 'ngon.png'
 %   'Dpi'            : 300
-%   'VideoFile'      : ''              e.g. 'ngon.mp4' (records only while animating)
+%   'VideoFile'      : ''              e.g. 'ngon.avi' (records only while animating)
 %   'Fps'            : 30
 %
 % OUTPUT (struct; if not requested, simulation still runs and plots/exports)
@@ -219,7 +219,24 @@ function out = ngonChaosGame(N, varargin)
         % video (records frames during animation only)
         vfile = string(opt.VideoFile);
         if strlength(vfile) > 0
-            vw = VideoWriter(char(vfile), 'MPEG-4');
+            prof = VideoWriter.getProfiles();
+            names = string({prof.Name});
+        
+            if any(names == "MPEG-4")
+                profileName = 'MPEG-4';
+            elseif any(names == "Motion JPEG AVI")
+                profileName = 'Motion JPEG AVI';
+                % If user asked for .mp4 but MPEG-4 is unavailable, suggest .avi
+                if endsWith(lower(vfile), ".mp4")
+                    warning("ngonChaosGame:VideoProfile", ...
+                        "MPEG-4 not available. Using Motion JPEG AVI. Consider changing VideoFile to '.avi'.");
+                end
+            else
+                error("ngonChaosGame:VideoProfile", ...
+                    "No suitable video profile found. Available profiles: %s", strjoin(names, ", "));
+            end
+        
+            vw = VideoWriter(char(vfile), profileName);
             vw.FrameRate = opt.Fps;
             open(vw);
         end
